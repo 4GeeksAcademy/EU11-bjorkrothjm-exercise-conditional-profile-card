@@ -54,24 +54,17 @@ function render(variables = {}) {
   let countryPlaceholder = "Country";
   if (variables.country != null) countryPlaceholder = variables.country;
 
-  let inputName = `<h1>${variables.name + " " + variables.lastname}</h1>`;
-  if (variables.name == null) {
-    if (variables.lastname == null) {
-      inputName = "<h1>Name Lastname</h1>";
-    } else {
-      inputName = `<h1>Name ${variables.lastname}</h1>`;
-    }
-  } else if (variables.lastname == null) {
-    inputName = `<h1>${variables.name} Lastname</h1>`;
-  } else {
-    inputName = `<h1>${variables.name + " " + variables.lastname}</h1>`;
-  }
+  let firstName = "Name";
+  if (variables.name != null) firstName = variables.name;
+
+  let lastName = "Lastname";
+  if (variables.lastname != null) lastName = variables.lastname;
 
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
           ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          ${inputName}
+          <h1>${firstName} ${lastName}</h1>
           <h2>${workRole}</h2>
           <h3>${cityPlaceholder}, ${countryPlaceholder}</h3>
           <ul class="${smPosition}">
