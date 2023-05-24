@@ -32,8 +32,29 @@ function render(variables = {}) {
   if (variables.socialMediaPosition == "position-left")
     smPosition = "position-left";
 
-  let inputName = `<h1>${variables.name + " " + variables.lastname}</h1>`;
+  let twitterLink = "href='https://twitter.com/4geeksacademy'";
+  if (variables.twitter != null)
+    twitterLink = `href='https://twitter.com/${variables.twitter}'`;
+  let githubLink = "href='https://github.com/4geeksacademy'";
+  if (variables.github != null)
+    githubLink = `href='https://github.com/${variables.github}'`;
+  let linkedinLink = "href='https://linkedin.com/4geeksacademy'";
+  if (variables.linkedin != null)
+    linkedinLink = `href='https://linkedin.com/${variables.linkedin}'`;
+  let instagramLink = "href='https://instagram.com/4geeksacademy'";
+  if (variables.instagram != null)
+    instagramLink = `href='https://instagram.com/${variables.instagram}'`;
 
+  let workRole = "Work Position";
+  if (variables.role != null) workRole = variables.role;
+
+  let cityPlaceholder = "City";
+  if (variables.city != null) cityPlaceholder = variables.city;
+
+  let countryPlaceholder = "Country";
+  if (variables.country != null) countryPlaceholder = variables.country;
+
+  let inputName = `<h1>${variables.name + " " + variables.lastname}</h1>`;
   if (variables.name == null) {
     if (variables.lastname == null) {
       inputName = "<h1>Name Lastname</h1>";
@@ -51,13 +72,13 @@ function render(variables = {}) {
           ${cover}
           <img src="${variables.avatarURL}" class="photo" />
           ${inputName}
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
+          <h2>${workRole}</h2>
+          <h3>${cityPlaceholder}, ${countryPlaceholder}</h3>
           <ul class="${smPosition}">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+            <li><a ${twitterLink}><i class="fab fa-twitter"></i></a></li>
+            <li><a ${githubLink}><i class="fab fa-github"></i></a></li>
+            <li><a ${linkedinLink}><i class="fab fa-linkedin"></i></a></li>
+            <li><a ${instagramLink}><i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
